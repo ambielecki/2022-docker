@@ -34,11 +34,11 @@ services:
 
   divelog:
     container_name: divelog-api
-    build: ./live-builds/divelog-api-api
+    build: ./live-builds/divelog-api
     environment:
       - VIRTUAL_HOST=divelog-api-api.test
     volumes:
-      - ../divelog-api-api:/var/www/divelog-api-api
+      - ../2022-divelog-api:/var/www/divelog-api
     working_dir: /var/www/divelog-api-api
     depends_on:
       - php-fpm-81

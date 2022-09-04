@@ -1,4 +1,4 @@
-FROM php:8.1.0-fpm
+FROM php:8.1.10-fpm
 
 RUN apt-get update && \
     apt-get upgrade -y
