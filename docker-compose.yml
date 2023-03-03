@@ -32,13 +32,33 @@ services:
     links:
       - mysql8
 
+  php-fpm-82:
+    container_name: php-fpm-82
+    build: live-builds/php-fpm-82
+    volumes:
+      - ../:/var/www/
+    working_dir: /var/www
+    links:
+      - mysql8
+
   divelog:
     container_name: divelog-api
     build: ./live-builds/divelog-api
     environment:
       - VIRTUAL_HOST=divelog-api.test
     volumes:
-      - ../2022-divelog-api:/var/www/2022-divelog-api
-    working_dir: /var/www/2022-divelog-api
+      - ../2022-divelog-api:/var/www/2023-divelog-api
+    working_dir: /var/www/2023-divelog-api
     depends_on:
-      - php-fpm-81
+      - php-fpm-82
+
+  butter:
+    container_name: butter
+    build: ./live-builds/butter
+    environment:
+      - VIRTUAL_HOST=butter.test
+    volumes:
+      - ../2022-divelog-api:/var/www/butter
+    working_dir: /var/www/butter
+    depends_on:
+      - php-fpm-82
